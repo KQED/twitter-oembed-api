@@ -30,7 +30,7 @@ abstract class TwitterOEmbedApi {
   ///               A supplied value under or over the allowed range will be
   ///               returned as the minimum or maximum supported width
   ///               respectively; the reset width value will be reflected in
-  ///               the returned [width] property. Note that Twitter does not
+  ///               the returned width property. Note that Twitter does not
   ///               support the oEmbed max height parameter. Tweets are
   ///               fundamentally text, and are therefore of unpredictable
   ///               height that cannot be scaled like an image or video.
@@ -199,9 +199,7 @@ class _TwitterOEmbedApi extends BaseService implements TwitterOEmbedApi {
       );
     }
 
-    return EmbeddedTweet.fromJson(
-      jsonDecode(response.body),
-    );
+    return EmbeddedTweet.fromJson(jsonDecode(response.body));
   }
 
   @override
@@ -241,15 +239,10 @@ class _TwitterOEmbedApi extends BaseService implements TwitterOEmbedApi {
       );
     }
 
-    return EmbeddedTimeline.fromJson(
-      jsonDecode(response.body),
-    );
+    return EmbeddedTimeline.fromJson(jsonDecode(response.body));
   }
 
-  String _getTimelineUrl(
-    String screenName,
-    String? listName,
-  ) {
+  String _getTimelineUrl(String screenName, String? listName) {
     if (listName != null) {
       return 'https://twitter.com/$screenName/lists/$listName';
     }
